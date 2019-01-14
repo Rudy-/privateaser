@@ -146,6 +146,12 @@ const actors = [{
   }]
 }];
 
+events.forEach(function(element) {
+  // Step 1 - Euro-People
+  var indexOfBar = bars.findIndex(i => i.id === element.barId)
+  element.price = element.time * bars[indexOfBar].pricePerHour + element.persons * bars[indexOfBar].pricePerPerson;
+});
+
 console.log(bars);
 console.log(events);
 console.log(actors);
