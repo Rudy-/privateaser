@@ -161,6 +161,15 @@ events.forEach(function(element) {
   } else if(element.persons > 10) {
     reduction = 0.9;
   }
+
+  element.price = element.price * reduction;
+
+  // Step 3 - Give me all your money
+  var commission = element.price * 0.3;
+
+  element.commission.insurance = commission * 0.5;
+  element.commission.treasury = element.persons;
+  element.commission.privateaser = commission * 0.5 - element.persons;
 });
 
 console.log(bars);
