@@ -170,6 +170,15 @@ events.forEach(function(element) {
   element.commission.insurance = commission * 0.5;
   element.commission.treasury = element.persons;
   element.commission.privateaser = commission * 0.5 - element.persons;
+
+  // Step 4 - The famous deductible
+  var deductiblePrice = 0;
+
+  if(element.options.deductibleReduction === true) {
+    deductiblePrice += element.persons;
+
+    element.price += deductiblePrice;
+  }
 });
 
 console.log(bars);
