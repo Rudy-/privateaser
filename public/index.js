@@ -150,6 +150,17 @@ events.forEach(function(element) {
   // Step 1 - Euro-People
   var indexOfBar = bars.findIndex(i => i.id === element.barId)
   element.price = element.time * bars[indexOfBar].pricePerHour + element.persons * bars[indexOfBar].pricePerPerson;
+  
+  // Step 2 - Send more, pay less
+  var reduction = 1;
+
+  if(element.persons > 60) {
+    reduction = 0.5;
+  } else if(element.persons > 20) {
+    reduction = 0.7;
+  } else if(element.persons > 10) {
+    reduction = 0.9;
+  }
 });
 
 console.log(bars);
