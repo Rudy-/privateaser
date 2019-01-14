@@ -179,6 +179,15 @@ events.forEach(function(element) {
 
     element.price += deductiblePrice;
   }
+
+  // Step 5 - Pay the actors
+  var indexOfActor = actors.findIndex(i => i.eventId === element.id);
+  
+  actors[indexOfActor].payment[0].amount = element.price; // Booker
+  actors[indexOfActor].payment[1].amount = element.price - commission; // Bar
+  actors[indexOfActor].payment[2].amount = element.commission.insurance; // Insurance
+  actors[indexOfActor].payment[3].amount = element.commission.treasury; // Treasury
+  actors[indexOfActor].payment[4].amount = element.commission.privateaser + deductiblePrice; // Privateaser
 });
 
 console.log(bars);
