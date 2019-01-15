@@ -162,7 +162,7 @@ events.forEach(function(element) {
     reduction = 0.9;
   }
 
-  element.price = element.price * reduction;
+  element.price = element.time * bars[indexOfBar].pricePerHour + (element.persons * bars[indexOfBar].pricePerPerson * reduction);
 
   // Step 3 - Give me all your money
   var commission = element.price * 0.3;
